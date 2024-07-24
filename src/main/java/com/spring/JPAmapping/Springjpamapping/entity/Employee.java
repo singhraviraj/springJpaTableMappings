@@ -1,6 +1,7 @@
 package com.spring.JPAmapping.Springjpamapping.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,10 @@ public class Employee {
     private String name;
 
     @OneToOne(mappedBy = "manager")
+    @JsonIgnore
     private Department managedDepartment;
 
+    @ManyToOne
+    @JoinColumn(name = "worker_department_Id")
+    private Department employee_departmentName;
 }
